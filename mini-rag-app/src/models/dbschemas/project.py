@@ -6,6 +6,14 @@ class Project(BaseModel):
     id: Optional[ObjectId] = Field(None, alias="_id")
     project_id: str = Field(..., min_length=1)
 
+    @classmethod
+    def get_indexes(cls):
+        return [
+            {"key": {"project_id": 1},
+             "name": "project_id_1_index_1"
+            , "unique": True}
+        ]
+
     @validator('project_id')
     def validate_project_id(cls, value):
         if not value.isalnum():

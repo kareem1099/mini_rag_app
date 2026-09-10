@@ -40,7 +40,7 @@ class ProcessingController(BaseController):
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size,
                                                         chunk_overlap=chunk_overlap,
                                                                     length_function=len,
-)
+) 
         if file_content is None:
             return None
         else:
@@ -48,4 +48,4 @@ class ProcessingController(BaseController):
             file_metadata=[rec.metadata for rec in file_content]
             chunks=text_splitter.create_documents(file_Texts,metadatas=file_metadata)
             return chunks
-        
+         
